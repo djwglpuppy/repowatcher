@@ -1,0 +1,45 @@
+.navbar.navbar-fixed-top
+    .navbar-inner
+        .container
+            .brand 
+                i.icon-github-sign.main_icon
+                | Watched Github Repos
+
+            ul.nav.nav-pills.pull-right
+                li.dropdown.maindropdown
+                    a.dropdown-toggle.filtertitle(data-toggle="dropdown") Language: <b>All</b>
+                        .icons.icon-filter
+                    ul.dropdown-menu(id='filterlist')
+.container
+    #login.box
+        .intro.
+            This application was built because I had a hell of a time finding a repository I was watching while within Github.  This will allow you to view your watched repositories grouped by language and filter accordingly.
+        .btn.btn-primary 
+            i.icon-cloud
+            |  &nbsp;&nbsp;Please login to Github here
+
+    #loader.box
+        .title Retrieving Watched Repos...
+        #spinner
+
+    #watched
+
+script#watched-template(type="text/template")
+    .watched-item.box
+        .title
+            .project <%= title %>
+            .info <span class='label label-info'><%= watchers %> watchers</span>
+        .desc <%= description %>
+        .link 
+            i.icon-external-link
+            a(href!='<%= url %>', target='_blank') <%= url %>
+        .author <i class='icon-user'></i> 
+            a(href!='https://github.com/<%= author %>', target='_blank') <%= author %>
+        .giturl <i class='icon-github'></i> <%= git_path %>
+        .remove.icon-remove-sign
+        .removeconfirm.box
+            .btn.btn-danger.confirmbtn remove watch
+            .btn.cancelbtn cancel
+
+
+
